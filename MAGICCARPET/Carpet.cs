@@ -96,14 +96,23 @@ namespace MAGICCARPET
             this.PID_BRAKE = new DIY_PID(BRAKE_P, BRAKE_I, BRAKE_D);
             //Replaces the joystick's sending command in order to make me own auto pilot
             //Might do this for throttle too?
-            this.joystick.OnSetStick = new Vector3Event();
-            this.joystick.OnSetStick.AddListener(UpdatePYR);
+
+            this.joystick = new List<VRJoystick>();
+            
+            foreach(VRJoystick joy in this.go.GetComponentsInChildren<VRJoystick>(true))
+            {
+                this.joystick.Add(joy);
+                joy.OnSetStick = new Vector3Event();
+                joy.OnSetStick.AddListener(UpdatePYR);
+                joy.OnMenuButtonDown.AddListener(this.toggleAP);
+
+            }
+        
 
             
             //this.joystick.OnMenuButtonDown.AddListener(toggleAP);
             
-            this.joystick.OnMenuButtonDown.AddListener(this.toggleAP);
-
+            
            /* foreach (AeroController.ControlSurfaceTransform surface in aero.controlSurfaces)
             {
                 if (surface.rollFactor == -1f && surface.transform.name.Contains("Right"))
@@ -353,7 +362,7 @@ namespace MAGICCARPET
         private VRLever flapsLever;
 
         public FlightInfo flightInfo;
-        public VRJoystick joystick;
+        public List<VRJoystick> joystick;
         public VRThrottle throttle;
         public VehicleInputManager inputManager;
         public VTOLAutoPilot vtolAP;

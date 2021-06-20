@@ -21,7 +21,6 @@ namespace MAGICCARPET.Patches
                 FlightLogger.Log("Player spawned, adding magic carpet");
                 Carpet magicCarpet = go.AddComponent<Carpet>();
                 magicCarpet.flightInfo = go.GetComponentInChildren<FlightInfo>(true);
-                magicCarpet.joystick = go.GetComponentInChildren<VRJoystick>();
                 magicCarpet.throttle = go.GetComponentInChildren<VRThrottle>(true);
                 magicCarpet.inputManager = go.GetComponentInChildren<VehicleInputManager>(true);
                 magicCarpet.vtolAP = go.GetComponentInChildren<VTOLAutoPilot>(true);
