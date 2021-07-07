@@ -38,24 +38,7 @@ namespace MAGICCARPET
         //This method is called every frame by Unity. Here you'll probably put most of your code
         void Update()
         {
-            if (!mpActive)
-            {
-                this.go = VTOLAPI.GetPlayersVehicleGameObject();
-                if (this.go && this.go.GetComponentInChildren<Carpet>(true) == null)
-                {
-                    FlightLogger.Log("Player spawned, adding magic carpet");
-                    Carpet magicCarpet = go.AddComponent<Carpet>();
-                    magicCarpet.flightInfo = go.GetComponentInChildren<FlightInfo>(true);
-                    magicCarpet.throttle = go.GetComponentInChildren<VRThrottle>(true);
-                    magicCarpet.inputManager = go.GetComponentInChildren<VehicleInputManager>(true);
-                    magicCarpet.vtolAP = go.GetComponentInChildren<VTOLAutoPilot>(true);
-                    magicCarpet.brakes = go.GetComponentInChildren<AirBrakeController>(true);
-                    magicCarpet.go = go;
-                    magicCarpet.Init();
-
-
-                }
-            }
+           
           
         }
 
