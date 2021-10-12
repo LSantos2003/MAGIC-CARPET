@@ -14,8 +14,10 @@ namespace MAGICCARPET.Patches
     {
         public static void Postfix(Actor __instance)
         {
-            if (__instance.isPlayer && VTOLAPI.GetPlayersVehicleEnum() == VTOLVehicles.FA26B)
+            if (__instance.isPlayer && (VTOLAPI.GetPlayersVehicleEnum() == VTOLVehicles.FA26B || VTOLAPI.GetPlayersVehicleEnum() == VTOLVehicles.F45A))
             {
+                AutoFlapsPatch.apEnabled = false;
+
                 GameObject go = __instance.gameObject;
 
                 FlightLogger.Log("Player spawned, adding magic carpet");

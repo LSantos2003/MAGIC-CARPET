@@ -280,6 +280,7 @@ namespace MAGICCARPET
             if ((!this.wm.isMasterArmed && this.gearAnim.state != GearAnimator.GearStates.Retracted) || this.apEnabled)
             {
                 this.apEnabled = !this.apEnabled;
+                AutoFlapsPatch.apEnabled = this.apEnabled;
 
                 this.throttle.sendEvents = !this.apEnabled;
 
@@ -295,7 +296,10 @@ namespace MAGICCARPET
                 }
                 else
                 {
-                    this.flapsLever.RemoteSetState(this.flapsLever.currentState);
+                    if(flapsLever != null)
+                    {
+                        this.flapsLever.RemoteSetState(this.flapsLever.currentState);
+                    }
                     this.hudInfo.RefreshWeaponInfo();
                 }
                 //this.glideReference.SetActive(this.apEnabled);

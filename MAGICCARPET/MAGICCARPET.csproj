@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="0Harmony, Version=1.2.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\VTOLVR_Data\Managed\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\VTOLVR_Data\Managed\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\Dependencies\Assembly-CSharp.dll</HintPath>
@@ -82,6 +82,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Patches\AutoFlapsPatch.cs" />
     <Compile Include="HUDCarrierSlope.cs" />
     <Compile Include="Patches\AirportPatch.cs" />
     <Compile Include="Carpet.cs" />
@@ -94,8 +95,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>IF EXIST "D:\SteamLibrary\steamapps\common\VTOL VR\VTOLVR_ModLoader\VTOLVR-ModLoader.exe" (
-copy "$(TargetPath)" "D:\SteamLibrary\steamapps\common\VTOL VR\VTOLVR_ModLoader\My Mods\MAGIC CARPET\Builds\MAGICCARPET.dll"
+    <PostBuildEvent>IF EXIST "C:\Program Files (x86)\Steam\steamapps\common\VTOL VR\VTOLVR_ModLoader" (
+copy "$(TargetPath)" "C:\Program Files (x86)\Steam\steamapps\common\VTOL VR\My Mods\MAGIC CARPET\Builds\MAGICCARPET.dll"
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>
