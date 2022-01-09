@@ -68,6 +68,12 @@ namespace MAGICCARPET
                        
             shipVectorGo.SetActive(false);
             Destroy(shipVectorGo.GetComponent<HUDVelVector>());
+
+            if (shipVectorGo.GetComponentInChildren<HUDEBracket>(true))
+            {
+                Destroy(shipVectorGo.GetComponentInChildren<HUDEBracket>(true).gameObject);
+            }
+
             this.shipVector = shipVectorGo.AddComponent<HUDShipVector>();
             shipVectorGo.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
             shipVectorGo.SetActive(true);
